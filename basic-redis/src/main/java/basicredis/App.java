@@ -73,7 +73,7 @@ public class App {
 		responses.add(pipe.incr(num));
 		responses.add(pipe.incr(num));
 		pipe.sync();
-		// can get value from Response from pipeline.sync
+		// can only get value from Response after calling pipeline.sync()
 		System.out.println("Response list: " + responses.stream().map(r -> r.get()).collect(Collectors.toList()));
 		
 		jedis.close();
@@ -86,6 +86,7 @@ public class App {
 			System.out.println(jedis.get("name"));
 			System.out.println(jedis.get("res:token"));
 		}
+		pool.close();
 	}
 
 }
