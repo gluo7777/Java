@@ -16,3 +16,4 @@
 ## Jedis
 - https://github.com/xetorthio/jedis/wiki/Getting-started
 - A single Jedis instance is not threadsafe!
+- JedisPool
