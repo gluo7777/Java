@@ -4,6 +4,11 @@ import static org.junit.Assert.assertArrayEquals;
 
 import org.junit.Test;
 
+/**
+ * Generic merge sort for arrays.
+ * @author gluo7
+ *
+ */
 public class MergeSort {
 	public static <T extends Comparable<T>> void sort(T[] lst) {
 		if(lst == null) return;
@@ -12,19 +17,18 @@ public class MergeSort {
 
 	public static <T extends Comparable<T>> void sort(T[] lst, int l, int r) {
 		if (l >= r) return;
-		int m = (r - l) / 2 + l;
-		sort(lst, l, m);
-		sort(lst, m + 1, l);
+		int m = (r - l) / 2 + l; // avoid integer overflow
+		sort(lst, l, m); // m inclusive
+		sort(lst, m + 1, l); // m exclusive
 		merge(lst, l, m, r);
 	}
 
 	@SuppressWarnings("unchecked")
 	private static <T extends Comparable<T>> void merge(T[] lst, int l, int m, int r) {
 		int leftLen = m - l + 1, rightLen = r - m;
-		Object[] left = new Object[leftLen];
-		Object[] right = new Object[rightLen];
-		for (int x = 0; x < leftLen; x++) left[x] = lst[l + x];
-		for (int x = 0; x < rightLen; x++) right[x] = lst[m + 1 + x];
+		Object[] left = new Object[leftLen], right = new Object[rightLen];
+		for (int x = 0; x < leftLen; x++) 	left[x] = lst[l + x];
+		for (int x = 0; x < rightLen; x++) 	right[x] = lst[m + 1 + x];
 		int i = 0, j = 0, k = l;
 		while(i < leftLen && j < rightLen) {
 			T leftVar = (T) left[i], rightVar = (T) right[j];
