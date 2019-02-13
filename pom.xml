@@ -16,6 +16,7 @@
 	</properties>
 	<modules>
 		<module>basic-redis</module>
+		<module>algorithms</module>
 	</modules>
 	<dependencies>
 		<dependency>
