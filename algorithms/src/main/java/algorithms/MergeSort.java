@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class MergeSort {
 	public static <T extends Comparable<T>> void sort(T[] lst) {
+		if(lst == null) return;
 		sort(lst, 0, lst.length - 1);
 	}
 
@@ -46,5 +47,20 @@ public class MergeSort {
 		String [] strings1 = {"abc","d","ef","ht"};
 		MergeSort.sort(strings1);
 		assertArrayEquals(new String[]{"abc","d","ef","ht"}, strings1);
+	}
+	
+	@Test
+	public void testBoundaryCases() {
+		// null or empty array
+		MergeSort.sort(null);
+		MergeSort.sort(new Integer[] {});
+		// one element
+		Integer [] nums1 = {5};
+		MergeSort.sort(nums1);
+		assertArrayEquals(new Integer[]{5}, nums1);
+		// two elements
+		Integer [] nums2 = {5,2};
+		MergeSort.sort(nums2);
+		assertArrayEquals(new Integer[]{2,5}, nums2);
 	}
 }
