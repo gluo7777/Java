@@ -1,4 +1,4 @@
-package ds;
+package ds.trees;
 
 public class TreeNode<T>{
     public T value;

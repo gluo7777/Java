@@ -1,4 +1,4 @@
-package ds;
+package ds.trees;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,6 +6,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Test;
+
+import ds.ListQueue;
+import ds.MyQueue;
 
 public class BinaryTree<T>{
     public TreeNode<T> root;

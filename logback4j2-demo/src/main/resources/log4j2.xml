@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- File-based configuration: https://logging.apache.org/log4j/2.x/manual/configuration.html -->
+<!-- As of version 2.9, for security reasons, Log4j does not process DTD 
+	in XML files. If you want to split the configuration in multiple files, use 
+	XInclude or Composite Configuration. -->
+<!-- monitorInterval="30 minimum time interval (seconds) before re-checking 
+	config file. Default is 5 seconds -->
+<Configuration status="WARN" monitorInterval="30" strict="true" name="DemoConfig">
+	<Properties>
+		<Property name="filename">target/test.log</Property>
+	</Properties>
+	<Appenders>
+		<Appender type="Console" name="STDOUT">
+			<Layout type="PatternLayout" pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Appender>
+		<Appender type="file" name="FILE" fileName="${filename}">
+			<Layout type="PatternLayout" pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Appender>
+	</Appenders>
+	<Loggers>
+		<!-- Trace enabled for demo.OnlyTraceMe, but ERROR for others -->
+		<!-- additivity="false" disable combining appender output -->
+		<Logger name="demo.Demo" level="TRACE"
+			additivity="false">
+			<AppenderRef ref="STDOUT" />
+		</Logger>
+		<!-- Log to file -->
+		<Logger name="demo.LogToFile" level="TRACE"
+			additivity="false">
+			<AppenderRef ref="FILE" />
+		</Logger>
+		<!-- Root is the parent of all loggers (Both appenders will be called, Root 
+			first) -->
+		<!-- Level indicates highest log level to log -->
+		<Root level="ERROR">
+			<AppenderRef ref="STDOUT" />
+		</Root>
+	</Loggers>
+</Configuration>
