@@ -5,3 +5,5 @@ target/
 !.gitignore
 deploy.sh
 **/*.class
+errors.txt
+result.txt

@@ -44,6 +44,7 @@ public class Graph{
         visited.add(n.key);
         boolean found = n.key == target;
         for(int i=0; i<n.neighbors.length; i++){
+            found
             found = dfs(n.neighbors[i], target, visited);
         }
         return found;
