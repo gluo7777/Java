@@ -7,3 +7,5 @@ deploy.sh
 **/*.class
 errors.txt
 result.txt
+.idea/
+*.iml

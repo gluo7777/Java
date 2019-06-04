@@ -20,7 +20,8 @@
 		<module>data-structures</module>
 		<module>logback4j2-demo</module>
 		<module>slf4j-logback4j2-demo</module>
-	</modules>
+        <module>concurrency</module>
+    </modules>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
